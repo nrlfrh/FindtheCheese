@@ -59,6 +59,26 @@ var cheese = {
   }
 };
 
+var gameOver ={
+    opacity:0,
+    drawMe: function(){
+        this.opacity += 0.01;
+
+        ctx.globalAlpha = this.opacity;
+        ctx.font = "bold 70px monospace";
+
+        ctx.fillStyle = "yellow";
+        ctx.fillText("Game Over", 311,325);
+
+        ctx.lineWidth = 3;
+        ctx.strkeStyle = "black";
+        ctx.strokeText("Game Over", 311, 325);
+
+        //reset globalAlpha so other drawings are normal(not transparent)
+        ctx.globalAlpha =1;
+    }
+}
+
 function mazeMe() {
   for (x = 0; x < maze.length; x++) {
     for (y = 0; y < maze[x].length; y++) {
