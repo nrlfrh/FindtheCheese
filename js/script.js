@@ -24,6 +24,8 @@ var mouse = {
   y: 0,
   width: 50,
   height: 50,
+  row: 0,
+  column: 0,
   drawMe: function() {
     ctx.drawImage(mouseImg, this.x, this.y, this.width, this.height);
   },
@@ -50,6 +52,8 @@ var cheese = {
   y: 450,
   width: 50,
   height: 50,
+  row:0,
+  column:10,
   drawMe: function() {
     ctx.drawImage(cheeseImg, this.x, this.y, this.width, this.height);
   }
@@ -86,37 +90,34 @@ drawEverything();
 
 document.onkeydown = function(event) {
   event.preventDefault();
-  if (mouse.controlBoundaries()) {
-    return;
-  }
-
   switch (event.keyCode) {
     case 37: //left arrow
-    //if (mouse.x === (maze[y][x].length === 0))
-      mouse.x -= 50;
+    if (mouse.column-1 >= 0 && maze[mouse.row][mouse.column-1] !== 1 ){
+        mouse.x -= 50;
+        mouse.column -= 1;
+    }
       break;
     case 38: //up arrow
-    //if (mouse.x === (maze[y][x].length === 0))
-      mouse.y -= 50;
+    if (mouse.row-1 >= 0 && maze[mouse.row-1][mouse.column] !== 1 ){
+        mouse.y -= 50;
+        mouse.row -= 1;
+    }
       break;
 
     case 39: //right arrow
-    //if (mouse.x === (maze[y][x].length === 0))
-      mouse.x += 50;
+    if (mouse.column+1 < 10 && maze[mouse.row][mouse.column+1] !== 1 ){
+        mouse.x += 50;
+        mouse.column += 1;
+    }
       break;
 
     case 40: //down arrow
-    //if (mouse.x === (maze[y][x].length === 0))
-      mouse.y += 50;
+    if (mouse.row +1 < 10 && maze[mouse.row+1][mouse.column] !==1 ){
+        mouse.y += 50;
+        mouse.row += 1;
+    }
       break;
   }
-};
 
-// function mazeBlock(mouseP, blackBox) {
-//     return (
-//       mouseP.y + mouseP.height >= blackBox.y &&
-//       mouseP.y <= blackBox.y + blackBox.height &&
-//       mouseP.x + mouseP.width >= blackBox.x &&
-//       mouseP.x <= blackBox.x + blackBox.width
-//     );
-//   }
+  mouse.controlBoundaries();
+};
