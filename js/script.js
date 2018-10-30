@@ -15,7 +15,7 @@ var maze = [
 ];
 
 var mouseImg = new Image();
-mouseImg.src = "./images/mouse.jpeg";
+mouseImg.src = "./images/mouse.png";
 var cheeseImg = new Image();
 cheeseImg.src = "./images/cheese.png";
 
