@@ -2,8 +2,9 @@ var canvas = document.querySelector(".board");
 var ctx = canvas.getContext("2d");
 
 // different kinds of maze
+// 2 - mouse; 0 - path; 1 - wall; -1 - cheese
 var maze1 = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
   [1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
   [0, 0, 0, 0, 1, 1, 1, 0, 1, 0],
@@ -16,46 +17,46 @@ var maze1 = [
 ];
 
 var maze2 = [
-  [0, 1, 1, 1, 0, 0, 0, 1, 1, 1],
-  [0, 0, 0, 1, 0, 1, 0, 0, 0, 1],
-  [0, 1, 0, 0, 0, 1, 0, 1, 0, 1],
-  [0, 1, 1, 0, 1, 1, 0, 1, 0, 1],
-  [0, 0, 1, 1, 1, 1, 0, 1, 0, 1],
-  [0, 1, 1, 0, 0, 0, 0, 1, 0, 0],
-  [1, 1, 1, 0, 1, 0, 1, 1, 1, 1],
-  [1, 1, 1, 0, 1, 0, 0, 0, 1, 1],
-  [1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
-  [-1, 0, 0, 0, 1, 1, 1, 0, 1, 1]
+  [1, 0, 0, 0, 2, 1, 1, 1, 1, 1],
+  [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+  [0, 1, 1, 0, 1, 1, 0, 1, 1, 1],
+  [0, 0, 1, 0, 1, 1, 0, 1, 1, 1],
+  [1, 0, 1, 1, 1, 0, 0, 0, 0, 1],
+  [-1, 1, 1, 0, 0, 0, 1, 1, 0, 1],
+  [0, 0, 1, 1, 1, 1, 1, 1, 0, 1],
+  [1, 0, 1, 1, 1, 1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 1, 1, 1]
 ];
 
 var maze3 = [
-  [0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
-  [1, 0, 1, 0, 0, 0, 0, 1, 1, 1],
-  [1, 0, 0, 1, 1, 1, 0, 0, 0, 0],
-  [1, 1, 0, 1, 0, 0, 0, 1, 1, 1],
-  [1, 0, 0, 1, 0, 1, 1, 1, 1, 1],
-  [1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
-  [1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-  [0, 1, 1, 1, 0, 1, 1, 1, 1, 1],
-  [-1, 1, 0, 0, 0, 1, 1, 1, 1, 1]
+  [1, 1, 1, 1, 1, 1, 0, 0, 0, 1],
+  [0, 0, 0, 1, 1, 1, 0, 1, 0, 1],
+  [0, 1, 0, 0, 0, 0, 1, 0, 0, 1],
+  [0, 1, 0, 1, 1, 1, 1, 1, 0, 1],
+  [0, 1, 0, -1, 1, 2, 0, 0, 0, 1],
+  [0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+  [0, 0, 1, 0, 1, 1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 0, 1, 0, 1, 1, 1],
+  [1, 1, 1, 1, 0, 1, 0, 0, 0, 1],
+  [1, 1, 1, 1, 0, 0, 0, 1, 1, 1]
 ];
 
 var maze4 = [
-  [0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
-  [1, 1, 0, 1, 1, 0, 1, 1, 1, 1],
-  [1, 1, 0, 0, 0, 0, 0, 0, 1, 1],
-  [1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
-  [1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
-  [1, 0, 1, 1, 1, 1, 1, 0, 0, 0],
-  [1, 0, 1, 0, 0, 1, 1, 0, 1, 0],
-  [1, 1, 1, 0, 1, 0, 0, 0, 1, 1],
-  [1, 1, 1, 0, 1, 0, 1, 0, 0, 0],
-  [-1, 0, 0, 0, 0, 0, 1, 1, 1, 0]
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 0, 0, 1, 1, 1, 0, 1, 1],
+  [1, 1, 1, 0, 1, 1, 1, 0, 1, 0],
+  [1, 2, 1, 0, 1, 1, 1, 0, 0, 0],
+  [1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+  [1, 0, 0, 1, 0, 1, 1, 1, 1, 0],
+  [0, 1, 0, 0, 0, 1, 1, -1, 1, 1],
+  [0, 0, 0, 1, 0, 0, 1, 0, 1, 1],
+  [1, 1, 0, 0, 1, 0, 1, 0, 1, 1],
+  [1, 1, 1, 1, 1, 0, 0, 0, 1, 1]
 ];
 
 var maze5 = [
-  [0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+  [0, 2, 0, 0, 0, 0, 1, 1, 1, 1],
   [0, 1, 1, 0, 1, 0, 1, 1, 1, 1],
   [0, 1, 0, 0, 1, 0, 1, 0, 0, 0],
   [0, 1, 0, 1, 0, 0, 1, 0, 1, 1],
@@ -68,20 +69,20 @@ var maze5 = [
 ];
 
 var maze6 = [
-  [0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
-  [1, 1, 0, 0, 0, 0, 1, 0, 0, 1],
-  [1, 0, 0, 1, 1, 0, 1, 0, 1, 1],
-  [1, 0, 1, 1, 0, 0, 0, 0, 1, 1],
-  [0, 0, 1, 1, 0, 1, 1, 1, 1, 1],
-  [0, 1, 0, 0, 0, 0, 1, 0, 0, 1],
-  [1, 1, 0, 1, 1, 0, 1, 0, 1, 1],
-  [0, 0, 0, 1, 1, 0, 1, 0, 1, 1],
-  [0, 1, 1, 1, 0, 0, 0, 0, 1, 1],
-  [-1, 1, 0, 0, 0, 1, 1, 1, 1, 1]
+  [2, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+  [1, 0, 1, 1, 1, 1, 0, 1, 0, 1],
+  [1, 0, 1, 0, -1, 1, 0, 1, 0, 1],
+  [1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+  [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
+  [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
 var maze7 = [
-  [0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+  [2, 1, 0, 0, 0, 0, 0, 0, 0, 1],
   [0, 1, 1, 0, 1, 1, 1, 1, 0, 1],
   [0, 1, 0, 0, 0, 0, 0, 1, 0, 1],
   [0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
@@ -108,9 +109,26 @@ allMaze.push(
 // generating random maze all the time
 var maze = [];
 function randomMaze(allMaze) {
-  return allMaze[Math.floor(Math.random() * allMaze.length)];
+  var selectedMaze = allMaze[Math.floor(Math.random() * allMaze.length)];
+
+console.log(selectedMaze)
+
+  for (var x = 0; x < selectedMaze.length; x++) {
+    for (var y = 0; y < selectedMaze[x].length; y++) {
+      if (selectedMaze[y][x] === -1) {
+        cheese.x = x * 50;
+        cheese.y = y * 50;
+      } else if (selectedMaze[y][x] === 2) {
+        mouse.x = x * 50;
+        mouse.y = y * 50;
+        mouse.row = y;
+        mouse.column = x;
+      }
+    }
+  }
+
+  return selectedMaze;
 }
-maze = randomMaze(allMaze);
 
 // creating mouse and cheese
 var mouseImg = new Image();
@@ -158,6 +176,8 @@ var cheese = {
   }
 };
 
+maze = randomMaze(allMaze);
+
 // gameover
 var gameOver = {
   opacity: 0,
@@ -186,8 +206,6 @@ function mazeMe() {
       if (maze[y][x] === 1) {
         ctx.fillStyle = "black";
         ctx.fillRect(x * 50, y * 50, 50, 50);
-      } else if (maze[y][x] === -1) {
-        cheese.drawMe();
       }
     }
   }
@@ -200,6 +218,7 @@ function drawEverything() {
   ctx.lineWidth = 3;
   ctx.strokeRect(0, 0, 500, 500);
 
+  cheese.drawMe();
   mouse.drawMe();
   mazeMe();
 
@@ -222,15 +241,16 @@ drawEverything();
 
 // key down function
 document.onkeydown = function(event) {
-  event.preventDefault();
   switch (event.keyCode) {
     case 37: //left arrow
+      event.preventDefault();
       if (mouse.column - 1 >= 0 && maze[mouse.row][mouse.column - 1] !== 1) {
         mouse.x -= 50;
         mouse.column -= 1;
       }
       break;
     case 38: //up arrow
+      event.preventDefault();
       if (mouse.row - 1 >= 0 && maze[mouse.row - 1][mouse.column] !== 1) {
         mouse.y -= 50;
         mouse.row -= 1;
@@ -238,6 +258,7 @@ document.onkeydown = function(event) {
       break;
 
     case 39: //right arrow
+      event.preventDefault();
       if (mouse.column + 1 < 10 && maze[mouse.row][mouse.column + 1] !== 1) {
         mouse.x += 50;
         mouse.column += 1;
@@ -245,6 +266,7 @@ document.onkeydown = function(event) {
       break;
 
     case 40: //down arrow
+      event.preventDefault();
       if (mouse.row + 1 < 10 && maze[mouse.row + 1][mouse.column] !== 1) {
         mouse.y += 50;
         mouse.row += 1;
