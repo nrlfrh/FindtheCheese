@@ -230,7 +230,7 @@ var gameOver = {
     ctx.globalAlpha = this.opacity;
     ctx.font = "bold 40px monospace";
 
-    ctx.fillStyle = "orangered";
+    ctx.fillStyle = "orange";
     ctx.fillText("You found the Cheese", 10, 250);
 
     ctx.lineWidth = 3;
@@ -254,7 +254,7 @@ function mazeMe() {
   for (x = 0; x < maze.length; x++) {
     for (y = 0; y < maze[x].length; y++) {
       if (maze[y][x] === 1) {
-        ctx.fillStyle = "orange";
+        ctx.fillStyle = "orangered";
         ctx.fillRect(x * 25, y * 25, 25, 25);
       }
     }
@@ -264,7 +264,7 @@ function mazeMe() {
 // putting everything in canvas
 function drawEverything() {
   ctx.clearRect(0, 0, 500, 500);
-  ctx.strokeStyle = "orange";
+  ctx.strokeStyle = "orangered";
   ctx.lineWidth = 3;
   ctx.strokeRect(0, 0, 500, 500);
     audio.play();
