@@ -233,7 +233,7 @@ var gameOver = {
     ctx.fillStyle = "orange";
     ctx.fillText("You found the Cheese", 10, 250);
 
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 2;
     ctx.strkeStyle = "black";
     ctx.strokeText("You found the Cheese", 10, 250);
 
