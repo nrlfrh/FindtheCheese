@@ -59,8 +59,8 @@ var maze3 = [
   [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+  [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 1, 0, 1, 0, 1, -1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-  [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1],
@@ -230,7 +230,7 @@ var gameOver = {
     ctx.globalAlpha = this.opacity;
     ctx.font = "bold 40px monospace";
 
-    ctx.fillStyle = "orange";
+    ctx.fillStyle = "orangered";
     ctx.fillText("You found the Cheese", 10, 250);
 
     ctx.lineWidth = 2;
@@ -254,7 +254,7 @@ function mazeMe() {
   for (x = 0; x < maze.length; x++) {
     for (y = 0; y < maze[x].length; y++) {
       if (maze[y][x] === 1) {
-        ctx.fillStyle = "orangered";
+        ctx.fillStyle = "gold";
         ctx.fillRect(x * 25, y * 25, 25, 25);
       }
     }
