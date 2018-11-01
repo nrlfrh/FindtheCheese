@@ -230,7 +230,7 @@ var gameOver = {
     ctx.globalAlpha = this.opacity;
     ctx.font = "bold 40px monospace";
 
-    ctx.fillStyle = "yellow";
+    ctx.fillStyle = "orange";
     ctx.fillText("You found the Cheese", 10, 250);
 
     ctx.lineWidth = 3;
