@@ -26,3 +26,14 @@ body{
 canvas{
     background-color: #f6f6f6;
 }
+
+.replay{
+    font-size: 40px;
+    font-weight: bold;
+    color: orangered;
+    top: 0;
+}
+
+button{
+    margin-left: 40%;
+}

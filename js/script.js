@@ -56,7 +56,7 @@ var maze4 = [
 ];
 
 var maze5 = [
-  [0, 2, 0, 0, 0, 0, 1, 1, 1, 1],
+  [2, 0, 0, 0, 0, 0, 1, 1, 1, 1],
   [0, 1, 1, 0, 1, 0, 1, 1, 1, 1],
   [0, 1, 0, 0, 1, 0, 1, 0, 0, 0],
   [0, 1, 0, 1, 0, 0, 1, 0, 1, 1],
@@ -176,7 +176,8 @@ var cheese = {
   }
 };
 
-maze = randomMaze(allMaze);
+var replay = document.querySelector(".replay");
+replay.style.visibility = "hidden";
 
 // gameover
 var gameOver = {
@@ -185,19 +186,26 @@ var gameOver = {
     this.opacity += 0.01;
 
     ctx.globalAlpha = this.opacity;
-    ctx.font = "bold 70px monospace";
+    ctx.font = "bold 40px monospace";
 
     ctx.fillStyle = "yellow";
-    ctx.fillText("Game Over", 50, 250);
+    ctx.fillText("You found the Cheese", 10, 250);
 
     ctx.lineWidth = 3;
     ctx.strkeStyle = "black";
-    ctx.strokeText("Game Over", 50, 250);
+    ctx.strokeText("You found the Cheese", 10, 250);
 
     //reset globalAlpha so other drawings are normal(not transparent)
     ctx.globalAlpha = 1;
+
+    replay.style.visibility = "visible";
+        return;
   }
 };
+
+maze = randomMaze(allMaze);
+
+replay.addEventListener("click", () => window.location.reload());
 
 // drawing the maze in canvas
 function mazeMe() {
@@ -237,6 +245,8 @@ function drawEverything() {
 }
 
 drawEverything();
+
+
 
 
 // key down function
