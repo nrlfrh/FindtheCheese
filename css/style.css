@@ -37,3 +37,24 @@ canvas{
 button{
     margin-left: 40%;
 }
+
+.play{
+    background-color: #f6f6f6;
+    color: black;
+    width: 400px;
+    height:500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.play h2{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.play p{
+    font-size: 20px;
+}
