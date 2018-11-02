@@ -4,7 +4,7 @@ h1 {
     color: black;
     text-align: center;
     font-family: sans-serif;
-    background-color: #f6f6f6;
+    background-image: url(../images/yellow.gif);
     width: 500px;
     margin-left: 32.5%;
 }
@@ -24,7 +24,7 @@ body{
 
 
 canvas{
-    background-color: #f6f6f6;
+    background-image: url(../images/yellow.gif);
 }
 
 .replay{
@@ -41,7 +41,7 @@ button{
 }
 
 .play{
-    background-image: url(../images/glitter.gif);
+    background-color: #f6f6f6;
     color: black;
     width: 400px;
     height:500px;
@@ -53,13 +53,17 @@ button{
 }
 
 .play h2{
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
-    background-color: #f6f6f6;
+    background-image: url(../images/yellow.gif);
 }
 
 .play p{
     font-size: 20px;
-    background-color: #f6f6f6;
+    background-image: url(../images/yellow.gif);
     width: 80%;
+}
+
+.mousecheese{
+    background-image: url(../images/yellow.gif);
 }
